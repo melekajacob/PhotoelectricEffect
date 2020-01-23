@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="Dependencies/style.css" />
+    <link
+      rel="stylesheet"
+      href="Dependencies/bootstrap-4/css/bootstrap.min.css"
+    />
+    <title>Photo Electric Effect By Jacob Meleka</title>
+  </head>
+  <body>
+    <div style="float: right" class="mt-2 pr-2">
+      <div class="container">
+        <div class="onoffswitch">
+          <input
+            type="checkbox"
+            name="onoffswitch"
+            class="onoffswitch-checkbox"
+            id="myonoffswitch"
+          />
+          <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+
+        <div>
+          <label for="lightIntensity">Light Intensity</label>
+          <input type="range" min="3" max="50" value="25" id="lightIntensity" />
+        </div>
+
+        <div>
+          <label for="lightFrequency">Light Frequency</label>
+          <input type="range" min="1" max="10" value="8" id="lightFrequency" />
+        </div>
+
+        <div>
+          <label for="metals">Choose Metal</label>
+          <select name="metals">
+            <option value="Nickel">Nickel</option>
+            <option value="Zinc">Zinc</option>
+            <option value="Magnesium">Magnesium</option>
+            <option value="Calcium">Calcium</option>
+            <option value="Cesium">Cesium</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="potentialDifference">Potential Difference</label>
+          <input
+            type="range"
+            min="0.5"
+            max="10"
+            value="5"
+            step="0.5"
+            id="potentialDifference"
+          />
+        </div>
+      </div>
+
+      <h3>Photoelectric Effect Data Table</h1>
+      <table class="table table-bordered">
+        <tr>
+          <th>Measurement</th>
+          <th>Value</th>
+        </tr>
+
+        <!-- Light Properties -->
+        <tr>
+          <td>Light Intensity</td>
+          <td id="intensityCell">-</td>
+        </tr>
+        <tr>
+          <td>Light Frequency</td>
+          <td id="frequencyCell">-</td>
+        </tr>
+
+        <!-- Metal Properties -->
+        <tr>
+          <td>Selected Metal</td>
+          <td id="metalNameCell">-</td>
+        </tr>
+        <tr>
+          <td>Work Function of Metal</td>
+          <td id="workFunctionCell">-</td>
+        </tr>
+        <tr>
+          <td>Threshold Frequency of Metal</td>
+          <td id="thresholdFreqCell">-</td>
+        </tr>
+        <!-- Apparatus Properties -->
+        <tr>
+          <td>Potential Difference</td>
+          <td id="potentialDiffCell">-</td>
+        </tr>
+        <tr>
+          <td>Current through Ammeter</td>
+          <td id="currentCell">-</td>
+        </tr>
+        <!-- Electron Properties -->
+        <tr>
+          <td>Maximum Kinetic Energy of Electrons</td>
+          <td id="kineticEnergyCell">-</td>
+        </tr>
+      </table>
+    </div>
+
+    <script src="Dependencies/bootstrap-4/js/bootstrap.min.js"></script>
+    <script src="Dependencies/jquery-3.3.1.min.js"></script>
+    <script src="Dependencies/p5/p5.js"></script>
+    <script src="javascript/sketch.js"></script>
+    <script src="javascript/constructors.js"></script>
+  </body>
+</html>
