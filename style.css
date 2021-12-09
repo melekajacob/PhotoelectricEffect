@@ -36,13 +36,13 @@
   box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-  content: "ON";
+  content: 'ON';
   padding-left: 19px;
   background-color: #34a7c1;
   color: #ffffff;
 }
 .onoffswitch-inner:after {
-  content: "OFF";
+  content: 'OFF';
   padding-right: 19px;
   background-color: #eeeeee;
   color: #999999;
@@ -66,4 +66,13 @@
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
+}
+
+.appContainer {
+  margin: 20px;
+}
+
+.dataTable {
+  margin-right: 20px;
+  float: right;
 }

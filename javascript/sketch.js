@@ -1,19 +1,15 @@
-// Things to Do
-// Download libraries
-// Style using bootstrap
-
 var electrons = [];
 var posCharges = [];
 var negCharges = [];
 
 var rateOfElectrons;
 var startSimulation;
-var lightFrequency = $("#lightFrequency").val();
-var metals = document.querySelectorAll("option");
+var lightFrequency = $('#lightFrequency').val();
+var metals = document.querySelectorAll('option');
 var selectedMetal = getMetal();
 var kinEnergy = 0;
 
-var potentialDifference = $("#potentialDifference").val();
+var potentialDifference = $('#potentialDifference').val();
 var current = 0;
 
 function setup() {
@@ -28,19 +24,19 @@ function draw() {
   background(35);
 
   //Checking if light source is on and the rate of electrons
-  startSimulation = $("#myonoffswitch").prop("checked");
-  rateOfElectrons = 60 - $("#lightIntensity").val();
+  startSimulation = $('#myonoffswitch').prop('checked');
+  rateOfElectrons = 60 - $('#lightIntensity').val();
 
-  if (lightFrequency != $("#lightFrequency").val()) {
-    lightFrequency = $("#lightFrequency").val();
+  if (lightFrequency != $('#lightFrequency').val()) {
+    lightFrequency = $('#lightFrequency').val();
   }
 
-  if (potentialDifference != $("#potentialDifference").val()) {
-    potentialDifference = $("#potentialDifference").val();
+  if (potentialDifference != $('#potentialDifference').val()) {
+    potentialDifference = $('#potentialDifference').val();
   }
 
   //Checking which metal is selected
-  if (selectedMetal.name != $("select").val()) {
+  if (selectedMetal.name != $('select').val()) {
     selectedMetal = getMetal();
   }
 
@@ -51,9 +47,9 @@ function draw() {
     startSimulation &&
     getLightFrequency(lightFrequency) >= selectedMetal.thresholdFrequency
   ) {
-    metals.forEach(function(metal) {
+    metals.forEach(function (metal) {
       if (selectedMetal.name != metal.value) {
-        metal.setAttribute("disabled", "disabled");
+        metal.setAttribute('disabled', 'disabled');
       }
     });
 
@@ -77,7 +73,7 @@ function draw() {
 
       if (electrons[i].x > 495 || electrons[i].x < 135) {
         if (electrons[i].x > 495) {
-          current = $("#lightIntensity").val() / 10;
+          current = $('#lightIntensity').val() / 10;
         }
         electrons.splice(i, 1);
       }
@@ -87,7 +83,7 @@ function draw() {
       }
 
       writeValues(
-        $("#lightIntensity").val(),
+        $('#lightIntensity').val(),
         getLightFrequency(lightFrequency),
         selectedMetal,
         potentialDifference,
@@ -97,8 +93,8 @@ function draw() {
     }
   } else {
     if (!startSimulation) {
-      metals.forEach(function(metal) {
-        metal.removeAttribute("disabled");
+      metals.forEach(function (metal) {
+        metal.removeAttribute('disabled');
       });
     }
     electrons = [];
@@ -109,8 +105,8 @@ function draw() {
 function drawApparatus() {
   // Drawing light source
   if (startSimulation) {
-    var lightIntensity = $("#lightIntensity").val() / 100;
-    fill("rgba(255,255,153," + String(lightIntensity) + ")");
+    var lightIntensity = $('#lightIntensity').val() / 100;
+    fill('rgba(255,255,153,' + String(lightIntensity) + ')');
     quad(300, 0, 140, 40, 140, 240, 330, 0);
   }
 
@@ -135,21 +131,21 @@ function getMetal() {
     name: String,
     workFunction: Number,
     thresholdFrequency: Number,
-    color: String
+    color: String,
   };
 
-  metal.name = $("select").val();
+  metal.name = $('select').val();
 
-  if (metal.name == "Nickel") {
+  if (metal.name == 'Nickel') {
     metal.workFunction = toJoules(5.01);
     metal.thresholdFrequency = metal.workFunction / (6.63 * Math.pow(10, -34));
-  } else if (metal.name == "Zinc") {
+  } else if (metal.name == 'Zinc') {
     metal.workFunction = toJoules(4.3);
     metal.thresholdFrequency = metal.workFunction / (6.63 * Math.pow(10, -34));
-  } else if (metal.name == "Magnesium") {
+  } else if (metal.name == 'Magnesium') {
     metal.workFunction = toJoules(3.68);
     metal.thresholdFrequency = metal.workFunction / (6.63 * Math.pow(10, -34));
-  } else if (metal.name == "Calcium") {
+  } else if (metal.name == 'Calcium') {
     metal.workFunction = toJoules(2.9);
     metal.thresholdFrequency = metal.workFunction / (6.63 * Math.pow(10, -34));
   } else {
@@ -176,27 +172,27 @@ function writeValues(
   current,
   kinEnergy
 ) {
-  $("#intensityCell").text(lightIntensity);
+  $('#intensityCell').text(lightIntensity);
 
   if (lightFrequency != 0) {
-    $("#frequencyCell").text(lightFrequency.toExponential(3) + " Hz");
+    $('#frequencyCell').text(lightFrequency.toExponential(3) + ' Hz');
   } else {
-    $("#frequencyCell").text("0");
+    $('#frequencyCell').text('0');
   }
 
-  $("#metalNameCell").text(selectedMetal.name);
-  $("#workFunctionCell").text(
-    selectedMetal.workFunction.toExponential(3) + " J"
+  $('#metalNameCell').text(selectedMetal.name);
+  $('#workFunctionCell').text(
+    selectedMetal.workFunction.toExponential(3) + ' J'
   );
-  $("#thresholdFreqCell").text(
-    selectedMetal.thresholdFrequency.toExponential(3) + " Hz"
+  $('#thresholdFreqCell').text(
+    selectedMetal.thresholdFrequency.toExponential(3) + ' Hz'
   );
-  $("#potentialDiffCell").text(potentialDifference + " V");
-  $("#currentCell").text(current + " A");
+  $('#potentialDiffCell').text(potentialDifference + ' V');
+  $('#currentCell').text(current + ' A');
 
   if (kinEnergy != 0) {
-    $("#kineticEnergyCell").text(kinEnergy.toExponential(3) + " J");
+    $('#kineticEnergyCell').text(kinEnergy.toExponential(3) + ' J');
   } else {
-    $("#kineticEnergyCell").text("0");
+    $('#kineticEnergyCell').text('0');
   }
 }
